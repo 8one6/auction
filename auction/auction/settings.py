@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
-OUTER_DIR = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
 DB_DIR = os.path.join(PROJECT_DIR, 'db')
 
 # Quick-start development settings - unsuitable for production
