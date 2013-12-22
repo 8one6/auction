@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib.messages import constants as message_constants
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
 DB_DIR = os.path.join(PROJECT_DIR, 'db')
@@ -62,6 +64,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
 )
+
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'alert alert-info',
+    message_constants.INFO: 'alert alert-info',
+    message_constants.SUCCESS: 'alert alert-success',
+    message_constants.WARNING: 'alert alert-warning',
+    message_constants.ERROR: 'alert alert-error'
+}
 
 ROOT_URLCONF = 'auction.urls'
 

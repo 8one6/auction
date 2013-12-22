@@ -17,4 +17,3 @@ class Bid(models.Model):
     
     def __unicode__(self):
         return u'Bid %'
-    
