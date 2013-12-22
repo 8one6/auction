@@ -1,7 +1,7 @@
 from django.db import models
 
 class Lot(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=200)
     description = models.TextField()
     openforbids = models.BooleanField(default=False)
     votecontrol = models.BooleanField(default=False)
@@ -13,7 +13,7 @@ class Lot(models.Model):
 class Bid(models.Model):
     lot = models.ForeignKey('Lot')
     amount = models.FloatField()
-    biddername = models.CharField()
+    biddername = models.CharField(max_length=200)
     
     def __unicode__(self):
         return u'Bid %'
