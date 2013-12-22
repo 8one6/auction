@@ -1,0 +1,76 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" media="screen"/>
+        <style>
+            body {
+                padding-top: 50px;
+            }
+            .alert{
+                margin-bottom: 10px;
+            }
+            ul.breadcrumb {
+                margin-bottom: 10px;
+                font-size: 10px;
+                padding: 0px 15px;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css href" href="{% static 'css/bootstrap-responsive.css' %}" />
+        {% block extra-style %}
+        {% endblock %}
+        <script src="{% static 'js/jquery-1.10.1.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        {% block extra-script %}
+        {% endblock %}
+        <title>{% block title %}Lion Auction{% endblock %}</title>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-inverse nav navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    {% block brand %}
+                        <a class="brand" href="/">LionAuction</a>
+                    {% endblock %}
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="divider-vertical"></li>
+                            Left Stuff
+                            {% block navbar-left-extra %}
+                            {% endblock %}
+                        </ul>
+                        <div class="pull-right">
+                            <ul class="nav pull-right">
+                                {% block navbar-right %}
+                                    {% block navbar-right-extra %}
+                                    {% endblock %}
+                                    Right Stuff
+                                {% endblock %}
+                            </ul><!--right side stuff-->
+                        </div><!--pull-right-->
+                    </div><!--nav-collapse-->
+                </div><!--container-->
+            </div><!--navbar-inner-->
+        </div><!--navbar-->
+        
+        <div class="container-fluid">
+            {% block breadcrumbs %}
+                {% include 'snippets/breadcrumbs.html' %}
+            {% endblock %}
+            
+            {% block messages %}
+                {% include 'snippets/messages.html' %}
+            {% endblock %}
+            
+            {% block content %}
+            {% endblock %}
+        </div><!--container-->
+    </body>
+</html>
