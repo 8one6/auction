@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-{{ block.super }} - Home.
+{{ block.super }} - Home
 {% endblock %}
 
 {% block content %}
@@ -10,5 +10,7 @@
         <p>
             <a class="btn btn-primary btn-large" href="#">Learn more</a>
         </p>
-    </div><!--hero-unit-->    
+    </div><!--hero-unit--> 
+   	<p>Session key: {{ request.session.session_key }}</p>
+		<p>Name: {{ request.session.name }}</p>
 {% endblock %}

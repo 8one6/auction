@@ -41,8 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     
     'south',
+    'widget_tweaks',
     
-    'auction'
+    'auction',
 )
 
 MIDDLEWARE_CLASSES = (

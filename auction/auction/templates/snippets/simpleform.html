@@ -1,0 +1,39 @@
+{% load widget_tweaks %}
+
+<div class="row">
+    <div class="span6">
+        <form class="form-horizontal" action="." method={{ form_method }}>
+            {% csrf_token %}
+            <fieldset>
+                <div>
+                    <legend>{{ form_legend }}</legend>
+                </div>
+                {% for error in form.non_field_errors %}
+                    <p class="text-error">{{ error }}</p>
+                {% endfor %}
+                {% for field in form.hidden_fields %}
+                    <input type="hidden" name="{{ field.name }}" value="{{ field.value }}">
+                {% endfor %}
+                {% for field in form.visible_fields %}
+                    <div class="control-group {% if field.errors %} error{% endif %}">
+                        <label class="control-label" for={{ field.html_name }}>{{ field.label }}</label>
+                        <div class="controls">
+                            {{ field|add_class:"input-block-level" }}
+                            {% for error in field.errors %}
+                                <span class="help-inline">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-success">Submit</button>
+                        {% if request.META.HTTP_REFERER %}
+                            <a class="btn btn-danger" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
