@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, ListView, TemplateView
 from auction.forms import WhoAmIForm
+from auction.models import Bid, Lot
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -24,4 +25,11 @@ class WhoAmIView(FormView):
     def form_valid(self, form):
         self.request.session['name'] = form.cleaned_data['name']
         self.request.session.save()
-        return super(FormView, self).form_valid(form)    
+        return super(FormView, self).form_valid(form)
+        
+
+class LotListView(ListView):
+    model = Lot
+    template_name = 'lot-list.html'
+    def get_queryset(self):
+        return Lot.objects.filter(visible=True).order_by('id')

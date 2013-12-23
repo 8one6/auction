@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Lot name</th>
+						<th>Lot description</th>
+            <th>Bid count</th>
+						<th>Place bid</th>
+        </tr>
+    <thead>
+    <tbody>
+        {% for object in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ object.name }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.bid_set.count }}</td>
+                <td>Blah</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

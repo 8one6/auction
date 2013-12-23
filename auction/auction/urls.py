@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from auction.views import HomeView, WhoAmIView
+from auction.views import HomeView, LotListView, WhoAmIView
 
 from django.contrib import admin
 admin.autodiscover()
@@ -22,5 +22,10 @@ urlpatterns = patterns('',
     url(r'^whoami/$',
         WhoAmIView.as_view(),
         name='auction_whoami'
+    ),
+    
+    url(r'^lot/$',
+        LotListView.as_view(),
+        name='auction_lot-list'
     ),
 )
