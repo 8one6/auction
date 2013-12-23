@@ -19,7 +19,7 @@ class Lot(models.Model):
         super(Lot, self).save()
         
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'Lot: %s' % self.name
 
         
 class Bid(models.Model):
@@ -37,4 +37,4 @@ class Bid(models.Model):
         super(Bid, self).save()
                     
     def __unicode__(self):
-        return u'Bid %d' % self.id  
+        return u'Bid: %d' % self.id  
